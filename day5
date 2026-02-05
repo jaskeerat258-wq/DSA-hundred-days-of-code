@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int main()
+{
+    int n, m;
+
+    // size of first log
+    scanf("%d", &n);
+    int a[n];
+
+    for(int i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    // size of second log
+    scanf("%d", &m);
+    int b[m];
+
+    for(int i = 0; i < m; i++)
+        scanf("%d", &b[i]);
+
+    int i = 0, j = 0, k = 0;
+    int merged[n + m];
+
+    // merge using two pointers
+    while(i < n && j < m)
+    {
+        if(a[i] <= b[j])
+            merged[k++] = a[i++];
+        else
+            merged[k++] = b[j++];
+    }
+
+    // remaining elements of first log
+    while(i < n)
+        merged[k++] = a[i++];
+
+    // remaining elements of second log
+    while(j < m)
+        merged[k++] = b[j++];
+
+    // print merged chronological log
+    for(int x = 0; x < n + m; x++)
+        printf("%d ", merged[x]);
+
+    return 0;
+}
